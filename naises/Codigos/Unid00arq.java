@@ -66,8 +66,8 @@ public class Unid00arq
     }
     public static void main ( String[] args )
     {
-        openWrite ( "Xereca.txt" );
-        openWrite ( "buceta.txt", "a" );
-        openRead  ( "BUCETARALHASSO.txt" );
+        openWrite ( "Arquivo.txt" );
+        openWrite ( "Arquivo.txt", "a" );
+        openRead  ( "Arquivo.txt" );
     }
 }
