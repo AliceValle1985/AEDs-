@@ -1,0 +1,142 @@
+Noções de complexidade
+
+Primeiro código
+int i = 10; 
+while (i >= 7){
+i--;
+} 
+A resposta é 3, pois o i irá diminuir até chegar a 7, como i = 10, 10 - 7 = 3
+Obs: cuidado com os sinais de >=, porque se fosse apenas o > a resposta seria 2, pois seria os números maiores que 7
+____________________________________________________________________________________________________
+Segundo código 
+for (int i = 5; i >= 2; i--){
+a--;
+} 
+A resposta é 4, pois aconteceu assim
+5 ( maior ou igual a 2? ) V   + 1 subtração
+4 ( maior ou igual a 2? ) V   + 1 subtração
+3 ( maior ou igual a 2? ) V   + 1 subtração
+2 ( maior ou igual a 2? ) V   + 1 subtração
+1 ( maior ou igual a 2? ) F
+Acaba a execução do for
+____________________________________________________________________________________________________
+Terceiro código
+for (int i = 0; i < 5; i++){
+if (i % 2 == 0){
+a--;
+b--;
+} else {
+c--;
+}
+}
+A resposta é 8, a lógica é que quando for numero par = + 2 subtrações, quando for um impar + 1 subtração
+i = 0 + 2 subtrações
+i = 1 + 1 subtração
+i = 2 + 2 subtrações
+i = 3 + 1 subtração
+i = 4 + 2 subtrações
+____________________________________________________________________________________________________
+Quarto código 
+
+int i = 10, b = 10;
+while (i > 0){
+b--;
+i = i >> 1;
+}
+i = 0; 
+while (i < 15){
+b--;
+i += 2;
+}
+A resposta é 12
+É importante destacar que quando isso aparece i = i >> 1; esta movendo os bits para direita, basicamente, isso subtrai por 2 o numero de i, então i = i >> 1; = i / 2
+i = 10 ( maior que 0? ) V + 1 subtração e i / 2
+i = 5  ( maior que 0? ) V + 1 subtração e i / 2
+i = 2  ( maior que 0? ) V + 1 subtração e i / 2
+i = 1  ( maior que 0? ) V + 1 subtração e i / 2
+i = 0  ( maior que 0? ) F 
+Acaba a execução do while
++4 subtrações
+i agora é igual a 0, e a execução desse novo while vai acontecer enquanto i < 15 e dentro da execução o i vai ir aumentando de dois em 2, então pode se dividir o 15 por 2 = 7
+Esse while vai acontecer 8 vezes.
+i = 0  ( menor que 15? ) V + 1 subtração e i + 2
+i = 2  ( menor que 15? ) V + 1 subtração e i + 2
+i = 4  ( menor que 15? ) V + 1 subtração e i + 2
+i = 6  ( menor que 15? ) V + 1 subtração e i + 2
+i = 8  ( menor que 15? ) V + 1 subtração e i + 2
+i = 10 ( menor que 15? ) V + 1 subtração e i + 2
+i = 12 ( menor que 15? ) V + 1 subtração e i + 2
+i = 14 ( menor que 15? ) V + 1 subtração e i + 2
+i = 16 ( menor que 15? ) F
+____________________________________________________________________________________________________
+Quinto código 
+
+for (int i = 0; i < n; i++){
+for (int j = 0; j < n - 3; j++){
+a *= 2;
+}
+}
+A resposta é: n( n - 3 )
+Obs: sempre que tiver um for dentro de outro for vai ser igual a quantidade de execuções ( nesse caso, n ) do primeiro for * a quantidade de execuções do segundo for
+Então seria ( i < n ) * (  j < n ), observe o n pois vai ser ele que vai definir a quantidade de execuções
+____________________________________________________________________________________________________
+Sexto código
+
+for (int i = n - 7; i >= 1; i--){
+for (int j = 0; j < n; j++){
+a *= 2;
+}
+} 
+A resposta é: ( n - 7 ) * n
+Obs: se o n for <= a 7 o código não vai ser executado por causa dessa parte i >= 1
+Se n = 1, iria acontecer ( 10 - 7 ) * 10 -> ( 3 ) * 10
+____________________________________________________________________________________________________
+Sétimo código 
+
+for (int i = n - 7; i >= 1; i--){
+for (int j = n - 7; j >= 1; j--){
+a *= 2;
+}
+}
+A resposta é: ( n - 7 )^2
+Pois o "n - 7" acontecem duas vezes dentro do for
+____________________________________________________________________________________________________
+Oitavo código
+
+for (int i = n; i > 1; i /= 2){
+a *= 2;
+}
+A resposta sera piso (log2(n))
+Obs: quando tem divisão iremos usar logaritmo, como esta dividindo por 2, será log2(n). 
+n = 16, o numero de divisão seria log2(16) = 4 ( pois o numero que eleva 2 e da 16 é = 4 )
+Se fosse uma divisão por 3 seria log3(n)
+____________________________________________________________________________________________________
+Nono código
+
+for (int i = n + 1; i > 0; i /= 2)
+a *= 2;
+}
+A resposta é: piso( log2(n +1) )
+É o piso por que como é uma divisão, o numero vai ser arredondado para o numero inteiro anterior
+____________________________________________________________________________________________________
+Decimo código 
+
+for (int i = 1; i < n; i *= 2)
+a *= 2;
+}
+A resposta é: teto ( log2(n) )
+É o teto por que como é uma multiplicação, o numero irá ser arredondado para o numero inteiro a frente
+____________________________________________________________________________________________________
+Decimo Primeiro código
+
+for (int i = 1; i <= n; i*= 2)
+a *= 2;
+}
+A resposta é: teto ( log2(n) )
+____________________________________________________________________________________________________
+Decimo Segundo código 
+
+for (int i = n+4; i > 0; i >>= 1){
+a *= 2;
+}
+A resposta é: piso ( log2( n + 4 ) )
